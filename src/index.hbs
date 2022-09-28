@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="container-align-center">
+        <div>{{ variable }}</div>
+        {{> button label="Hey asd" styles="button-form" background="button-background-default"}}
+        <h1>Список страниц</h1>
+    </div>
+    <div class="ul-wrap">
+        <ul>
+            <li>{{> link title="Авторизация"
+                    styles="link "
+                    href="/login.html"}}</li>
+
+            <li>{{> link title="Регистрация"
+                    styles="link "
+                    href="/registration.html"}}</li>
+
+            <li>{{> link title="Страница 404"
+                    styles="link "
+                    href="/error.html"}}</li>
+
+            <li>{{> link title="Страница 5**"
+                    styles="link "
+                    href="/error500.html"}}</li>
+
+            <li>{{> link title="Список чатов и лента переписки"
+                    styles="link "
+                    href="/chat.html"}}</li>
+
+            <li>{{> link title="Настройки пользователя"
+                    styles="link "
+                    href="/account.html"}}</li>
+
+            <li>{{> link title="Настройки пользователя - редактировать профиль "
+                        styles="link "
+                        href="/account_edit.html"}}</li>
+
+            <li>{{> link title="Настройки пользователя - смена пароля"
+                    styles="link "
+                    href="/account_change_password.html"}}</li>
+        </ul>
+    </div>
+
+</div>

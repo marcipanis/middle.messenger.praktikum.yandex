@@ -1,0 +1,41 @@
+{{#>account_layout}}
+        {{#> form   form-wrap="form-account-wrap"}}
+
+            {{#> avatar styles="avatar-default"}} {{/avatar}}
+
+            <span class="form-account-title">  {{dataname}} </span>
+
+            <ul class="account-input-wrap">
+                {{#each data}}
+                    <li class="account-input-wrap">
+                        <div class="account-input-label-wrap">
+                            <span class="account-input-label">{{this.name}}</span>
+                            <span class="account-input">{{this.value}}</span>
+                        </div>
+                        <div class="account-input-border"></div>
+                    </li>
+                {{/each}}
+            </ul>
+
+            <div class="link-wrap">
+            {{> link title="Изменить данные"
+                    styles="link link-decor-marine"
+                    href="/account_edit.html"
+                    link-border="link-decor-border"}}
+
+            {{> link title="Изменить пароль"
+                    styles="link link-decor-marine"
+                    href="/account_change_password.html"
+                    link-border="link-decor-border"}}
+
+
+            {{> link title="Выйти"
+                    styles="link link-decor-red"
+                    href="/"}}
+            </div>
+
+        {{/form}}
+
+{{/account_layout}}
+
+

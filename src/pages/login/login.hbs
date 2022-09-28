@@ -1,0 +1,28 @@
+{{#> form  title="Вход" form-wrap="form-login-wrap"}}
+
+    {{>input title="Логин"
+            styles="input input-icon-left input-login"
+            type="text"
+            name="login"
+            placeholder="pupkin"
+            validate-message=""}}
+
+    {{>input title="Пароль"
+            styles="input input-icon-left input-password"
+            type="password"
+            name="password"
+            placeholder="Пароль"
+            validate-message=""}}
+
+    {{> button label="Авторизоваться"
+            styles="button-form"
+            background="button-background-main"}}
+
+
+    {{> link title="Регистрация"
+            link-wrap="link-wrap"
+            styles="link"
+            href="/registration.html"}}
+
+
+{{/form}}
