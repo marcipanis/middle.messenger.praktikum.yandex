@@ -29,7 +29,8 @@
   height: 20px;
   flex: 1;
   position: relative;
-  font-family: Raleway-Bold, sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
 }
 
 .chatlist-item-message-title-left {
@@ -56,7 +57,8 @@
   height: 80%;
   position: relative;
   overflow: hidden;
-  font-family: Raleway-Medium, sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
 }
 
 .chatlist-item-message-text-left {
@@ -82,7 +84,8 @@
   height: 20px;
   border-radius: 50%;
   background-color: #1ec8be;
-  font-family: Raleway-Bold, sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
   font-size: 14px;
   color: white;
 }

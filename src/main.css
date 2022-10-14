@@ -1,23 +1,8 @@
 @import "./variables.css";
 
 @font-face {
-  font-family: Raleway-Regular;
-  src: url("../static/fonts/Raleway-Regular.ttf");
-}
-
-@font-face {
-  font-family: Raleway-Medium;
-  src: url("../static/fonts/Raleway-Medium.ttf");
-}
-
-@font-face {
-  font-family: Raleway-Bold;
-  src: url("../static/fonts/Raleway-Bold.ttf");
-}
-
-@font-face {
-  font-family: Raleway-SemiBold;
-  src: url("../static/fonts/Raleway-SemiBold.ttf");
+  font-family: 'Raleway', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap');
 }
 
 * {
@@ -33,7 +18,8 @@ body {
 body,
 html {
   height: 100%;
-  font-family: Raleway-Regular, sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
 }
 
 .container {
@@ -64,7 +50,8 @@ html {
 }
 
 a {
-  font-family: Raleway-Regular, sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
   font-size: 14px;
   line-height: 1.7;
   color: #171212;

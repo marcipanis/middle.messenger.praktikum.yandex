@@ -20,7 +20,8 @@
 
 .error-link {
   text-decoration: none;
-  font-family: Raleway-Medium, sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
 }
 
 .link-decor-red {

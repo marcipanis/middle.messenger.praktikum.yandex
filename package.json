@@ -5,8 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "parcel -p 3001 src/index.html  --no-cache",
-    "build": "parcel build src/index.html --no-source-maps --no-cache --public-url ./",
-    "start": "parcel src/index.html && node ./server.js --no-source-maps",
+    "build": "parcel build src/index.html --no-cache --public-url ./",
+    "start": "parcel src/index.html && node ./server.js ",
     "eslint": "./node_modules/.bin/eslint . --fix",
     "stylelint": "npx stylelint '**/*.css'"
   },
@@ -47,5 +47,14 @@
     "handlebars": "4.7.7",
     "nanoid": "3.3.1",
     "express": "4.18.1"
+  },
+  "staticFiles": {
+    "staticPath": "assets",
+    "distDir": "dist"
+  },
+  "engines": {
+    "npm": "8.19.2",
+    "node": "v18.10.0",
+    "browsers": ">= 50%"
   }
 }

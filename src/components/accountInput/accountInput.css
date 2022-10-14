@@ -14,7 +14,8 @@
 }
 
 .account-input-label {
-  font-family: Raleway-Medium, sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
   color: #333;
   line-height: 1.5;
   padding-left: 7px;
@@ -31,14 +32,16 @@
 }
 
 .account-input-validate-message {
-  font-family: Raleway-Regular, sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
   font-size: 14px;
   color: #ea0a0a;
   float: right;
 }
 
 .account-input {
-  font-family: Raleway-Medium, sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
   font-size: 16px;
   color: #333;
   line-height: 1.2;

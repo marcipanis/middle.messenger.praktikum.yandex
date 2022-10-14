@@ -7,7 +7,8 @@
 }
 
 .input-label {
-  font-family: Raleway-Regular, sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
   font-size: 14px;
   color: #333;
   line-height: 1.5;
