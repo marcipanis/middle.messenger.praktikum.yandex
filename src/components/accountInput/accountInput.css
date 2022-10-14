@@ -1,0 +1,54 @@
+.account-input-wrap {
+  width: 100%;
+  padding-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 0 0 100%;
+  flex-wrap: wrap;
+}
+
+.account-input-label-wrap {
+  display: flex;
+  flex-direction: row;
+}
+
+.account-input-label {
+  font-family: Raleway-Medium, sans-serif;
+  color: #333;
+  line-height: 1.5;
+  padding-left: 7px;
+  white-space: nowrap;
+}
+
+.account-input-border {
+  width: 100%;
+  border-bottom: 2px solid rgb(170 169 173 / 24%);
+}
+
+.account-input-validate-message-wrap {
+  padding-top: 3px;
+}
+
+.account-input-validate-message {
+  font-family: Raleway-Regular, sans-serif;
+  font-size: 14px;
+  color: #ea0a0a;
+  float: right;
+}
+
+.account-input {
+  font-family: Raleway-Medium, sans-serif;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.2;
+  width: 100%;
+  height: 30px;
+  background: transparent;
+  padding: 0 7px 0 43px;
+  text-align: right;
+}
+
+.account-input:focus {
+  width: 100%;
+}

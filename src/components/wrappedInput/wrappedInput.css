@@ -1,0 +1,21 @@
+@import "../../variables.css";
+
+.input-wrap {
+  width: 100%;
+  position: relative;
+  padding-bottom: 35px;
+}
+
+.input-label {
+  font-family: Raleway-Regular, sans-serif;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+  padding-left: 7px;
+  white-space: nowrap;
+}
+
+.input-border {
+  width: 100%;
+  border-bottom: 2px solid var(--input-border);
+}

@@ -1,0 +1,39 @@
+.form-login-wrap {
+  width: 500px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  align-items: center;
+  padding: 45px 55px 34px;
+}
+
+.form-account-wrap {
+  width: 800px;
+  overflow: hidden;
+  padding: 15px 55px 34px;
+  height: 100%;
+}
+
+.form {
+  width: 100%;
+}
+
+.form-title {
+  display: block;
+  font-family: Raleway-Bold, sans-serif;
+  font-size: 39px;
+  color: #333;
+  line-height: 1.2;
+  text-align: center;
+  padding-bottom: 34px;
+}
+
+.form-account-title {
+  display: block;
+  font-family: Raleway-Bold, sans-serif;
+  font-size: 18px;
+  color: #333;
+  line-height: 1.2;
+  text-align: center;
+  padding-bottom: 20px;
+}

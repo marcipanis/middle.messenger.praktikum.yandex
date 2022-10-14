@@ -1,0 +1,19 @@
+.account-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  flex: 0 0 100%;
+  flex-flow: wrap row;
+  justify-content: center;
+}
+
+.account-button-container {
+  width: 4%;
+  flex: 1;
+}
+
+.account-form-container {
+  background: rgb(255 255 255);
+  width: 95%;
+}

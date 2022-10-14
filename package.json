@@ -2,31 +2,51 @@
   "name": "ya-chat",
   "version": "1.0.0",
   "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "parcel -p 3001 src/index.html ./src/pages/../*.html --no-cache",
-    "build": "parcel  build  src/index.html  ./src/pages/../*.html  --no-cache --public-url ./",
-    "start": "npm run build src/index.html  ./src/pages/../*.html && node ./server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel -p 3001 src/index.html  --no-cache",
+    "build": "parcel build src/index.html --no-source-maps --no-cache --public-url ./",
+    "start": "parcel src/index.html && node ./server.js --no-source-maps",
+    "eslint": "./node_modules/.bin/eslint . --fix",
+    "stylelint": "npx stylelint '**/*.css'"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marcipanis/chat-project.git"
+    "url": "git+https://github.com/marcipanis/middle.messenger.praktikum.yandex.git"
   },
   "bugs": {
-    "url": "https://github.com/marcipanis/chat-project/issues"
+    "url": "https://github.com/marcipanis/middle.messenger.praktikum.yandex/issues"
   },
-  "homepage": "https://github.com/marcipanis/chat-project#readme",
+  "homepage": "https://github.com/marcipanis/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars-precompile": "1.0.1",
+    "@babel/core": "7.17.8",
+    "@parcel/plugin": "2.7.0",
+    "@parcel/transformer-inline-string": "2.7.0",
     "@parcel/transformer-sass": "2.7.0",
+    "@types/node": "17.0.23",
+    "@typescript-eslint/eslint-plugin": "5.38.1",
+    "@typescript-eslint/parser": "5.38.1",
+    "babel-preset-es2015": "6.24.1",
+    "babel-preset-stage-0": "6.24.1",
+    "eslint": "8.24.0",
+    "eslint-config-airbnb": "19.0.4",
+    "express": "4.18.1",
     "parcel": "2.7.0",
-    "prettier": "2.7.1"
+    "postcss": "8.4.12",
+    "postcss-import": "14.1.0",
+    "prettier": "2.7.1",
+    "stylelint": "14.13.0",
+    "stylelint-config-standard-scss": "5.0.0",
+    "typescript": "4.6.2"
   },
   "dependencies": {
-    "@parcel/transformer-css": "2.7.0",
-    "express": "4.18.1",
-    "handlebars": "4.7.7"
+    "babel-core": "6.26.3",
+    "handlebars": "4.7.7",
+    "nanoid": "3.3.1",
+    "express": "4.18.1"
   }
 }
