@@ -7,6 +7,7 @@ interface AvatarProps {
 }
 
 export class Avatar extends Block {
+  static componentName = 'Avatar';
   constructor({
     styles,
   }: AvatarProps) {

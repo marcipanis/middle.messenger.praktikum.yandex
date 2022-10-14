@@ -13,6 +13,7 @@ interface WrappedInputProps extends InputProps {
 }
 
 export class WrappedInput extends Block {
+  static componentName = 'WrappedInput';
   constructor({
     ...props
   }: WrappedInputProps) {

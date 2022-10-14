@@ -8,6 +8,7 @@ interface FormProps {
 }
 
 export class Form extends Block {
+  static componentName = 'Form';
   constructor(props: FormProps) {
     const onClick = (e: MouseEvent) => {
       e.preventDefault();

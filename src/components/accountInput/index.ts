@@ -13,6 +13,7 @@ interface AccountInputProps extends InputProps {
 }
 
 export class AccountInput extends Block {
+  static componentName = 'AccountInput';
   constructor({
     ...props
   }: AccountInputProps) {

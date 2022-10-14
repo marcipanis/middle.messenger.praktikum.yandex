@@ -12,6 +12,7 @@ interface LinkProps {
 }
 
 export class Link extends Block {
+    static componentName = 'Link';
   constructor({
     linkWrap, styles, href, background, title, linkBroder,
   }: LinkProps) {

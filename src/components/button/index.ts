@@ -12,6 +12,7 @@ interface ButtonProps {
 }
 
 export class Button extends Block {
+  static componentName = 'Button';
   constructor({
     label, background, styles, type, onClick, onSubmit,
   }: ButtonProps) {
