@@ -20,7 +20,7 @@ export class WrappedInput extends Block {
   }: WrappedInputProps) {
     super({
       ...props,
-      onBlur: (e: FocusEvent) => {
+      onCheck: (e: FocusEvent) => {
         const input = e.target as HTMLInputElement;
         const { value } = input;
         const { name } = input;
@@ -45,8 +45,8 @@ export class WrappedInput extends Block {
                 type=type
                 name=name
                 placeholder=placeholder
-                onFocus=onFocus
-                onBlur=onBlur
+                onFocus=onCheck
+                onBlur=onCheck
                 onChange=onChange
                 
         }}}

@@ -21,6 +21,7 @@ export default class Block<P = any> {
 
   public id = nanoid(6);
 
+// @ts-expect-error
   private readonly _meta: BlockMeta;
 
   // eslint-disable-next-line no-undef
@@ -67,6 +68,7 @@ export default class Block<P = any> {
   }
 
   /*eslint-disable */
+  // @ts-expect-error
   protected getStateFromProps(props: any): void {
     this.state = {};
   }
@@ -82,6 +84,7 @@ export default class Block<P = any> {
   }
 
   /*eslint-disable */
+  // @ts-expect-error
   componentDidMount(props: P) {}
   /* eslint-enable */
 
@@ -94,6 +97,7 @@ export default class Block<P = any> {
   }
 
   /*eslint-disable */
+  // @ts-expect-error
   componentDidUpdate(oldProps: P, newProps: P) {
     return true;
   }
@@ -186,6 +190,7 @@ export default class Block<P = any> {
     }
 
     Object.entries(events).forEach(([event, listener]) => {
+      // @ts-expect-error
       this._element!.removeEventListener(event, listener);
     });
   }
@@ -198,6 +203,7 @@ export default class Block<P = any> {
     }
 
     Object.entries(events).forEach(([event, listener]) => {
+      // @ts-expect-error
       this._element!.addEventListener(event, listener);
     });
   }

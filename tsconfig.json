@@ -9,7 +9,9 @@
     "forceConsistentCasingInFileNames": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true
   },
   "exclude": ["node_modules", "dist", "server"],
   "include": ["src/**/*.ts", "typings/app.d.ts"]
