@@ -112,8 +112,6 @@ function getPage(pathname: string) {
 
 window.addEventListener('DOMContentLoaded', () => {
   const App = getPage(window.location.pathname);
-
   // console.log(App);
-
   renderDOM(App);
 });
