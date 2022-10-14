@@ -14,7 +14,8 @@ export interface InputProps {
 }
 
 export class Input extends Block {
-    static componentName = 'Input';
+  static componentName = 'Input';
+
   constructor({
     onChange, onFocus, onBlur, ...props
   }: InputProps) {

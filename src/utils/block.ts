@@ -66,9 +66,11 @@ export default class Block<P = any> {
     this._element = this._createDocumentElement('div');
   }
 
+  /*eslint-disable */
   protected getStateFromProps(props: any): void {
     this.state = {};
   }
+  /* eslint-enable */
 
   init() {
     this._createResources();
@@ -79,9 +81,9 @@ export default class Block<P = any> {
     this.componentDidMount(props);
   }
 
-  componentDidMount(props: P) {
-
-  }
+  /*eslint-disable */
+  componentDidMount(props: P) {}
+  /* eslint-enable */
 
   _componentDidUpdate(oldProps: P, newProps: P) {
     const response = this.componentDidUpdate(oldProps, newProps);
@@ -91,9 +93,11 @@ export default class Block<P = any> {
     this._render();
   }
 
+  /*eslint-disable */
   componentDidUpdate(oldProps: P, newProps: P) {
     return true;
   }
+  /* eslint-enable */
 
   setProps = (nextProps: P) => {
     if (!nextProps) {

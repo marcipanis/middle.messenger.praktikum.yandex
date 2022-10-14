@@ -57,14 +57,14 @@
 }
 
 .chat-text {
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 700;
   color: white;
   font-size: 25px;
 }
 
 .chat-avatar-account-title {
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 700;
   color: black;
   font-size: 25px;

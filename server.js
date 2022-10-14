@@ -1,5 +1,8 @@
-const path = require("path");
-const server = require("express");
+/*eslint-disable */
+const path = require('path');
+const server = require('express');
+/* eslint-enable */
+
 const app = server();
 const port = process.env.PORT || 3000;
 

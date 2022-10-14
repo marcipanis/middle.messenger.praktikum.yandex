@@ -2,10 +2,9 @@
   width: 100%;
   padding-bottom: 15px;
   display: flex;
-  flex-direction: column;
   height: 100%;
   flex: 0 0 100%;
-  flex-wrap: wrap;
+  flex-flow: wrap column;
 }
 
 .account-input-label-wrap {
@@ -14,7 +13,7 @@
 }
 
 .account-input-label {
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 500;
   color: #333;
   line-height: 1.5;
@@ -32,7 +31,7 @@
 }
 
 .account-input-validate-message {
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 400;
   font-size: 14px;
   color: #ea0a0a;
@@ -40,7 +39,7 @@
 }
 
 .account-input {
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 500;
   font-size: 16px;
   color: #333;

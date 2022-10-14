@@ -3,6 +3,7 @@ import './errorInput.css';
 
 export class ErrorInput extends Block {
   static componentName = 'ErrorInput';
+
   protected render(): string {
     if (this.props.isValid) {
       return '<div />';

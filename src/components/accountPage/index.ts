@@ -8,6 +8,7 @@ interface AccountLayoutProps {
 
 export class AccountLayout extends Block {
   static componentName = 'AccountLayout';
+
   constructor({ ...props }: AccountLayoutProps) {
     super({ ...props });
   }
