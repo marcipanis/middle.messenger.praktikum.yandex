@@ -7,7 +7,7 @@ interface ChatlistItemProps {
     messageTime: Date;
     avatar?: string;
     message: string;
-    messageCount?: string;
+    messageCount?: number;
     onClick: () => void;
 }
 

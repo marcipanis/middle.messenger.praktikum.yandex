@@ -51,10 +51,10 @@ const chatData = {
   accountName: 'Василий',
   chatlistItems: [
     {
-      displayName: 'Илья', messageTime: '15:12', avatar: 'аватар', message: 'Друзья, у меня для вас особенный выпуск новостей!...', messageCount: '4',
+      displayName: 'Илья', messageTime: '15:12', avatar: 'аватар', message: 'Друзья, у меня для вас особенный выпуск новостей!...', messageCount: 4,
     },
     {
-      displayName: 'Design Destroyer', messageTime: 'Вт', avatar: '', message: 'В 2008 году художник Jon Rafman начал собирать...', messageCount: '',
+      displayName: 'Design Destroyer', messageTime: 'Вт', avatar: '', message: 'В 2008 году художник Jon Rafman начал собирать...', messageCount: 0,
     },
   ],
   isChat: true,
@@ -112,6 +112,6 @@ function getPage(pathname: string) {
 
 window.addEventListener('DOMContentLoaded', () => {
   const App = getPage(window.location.pathname);
-  // console.log(App);
+   // console.log(App);
   renderDOM(App);
 });

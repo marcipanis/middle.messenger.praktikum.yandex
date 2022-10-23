@@ -4,7 +4,7 @@ import './chat.css';
 
 type ChatPageProps = {
   accountName: string;
-  chatlistItems: { displayName: string; messageTime: string; avatar: string; message: string; messageCount: string}[];
+  chatlistItems: { displayName: string; messageTime: string; avatar: string; message: string; messageCount: number}[];
   isChat: boolean;
 }
 

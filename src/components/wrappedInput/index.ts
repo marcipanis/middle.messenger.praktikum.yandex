@@ -24,9 +24,9 @@ export class WrappedInput extends Block {
         const input = e.target as HTMLInputElement;
         const { value } = input;
         const { name } = input;
-        const [flag, text] = Validator.validate(<ValidationType>name, value);
+        const [valid, text] = Validator.validate(<ValidationType>name, value);
         this.refs.error.setProps({
-          isValid: flag,
+          isValid: valid,
           validateMessage: text,
         });
       },

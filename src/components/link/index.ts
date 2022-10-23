@@ -18,7 +18,7 @@ export class Link extends Block {
     linkWrap, styles, href, background, title, linkBroder,
   }: LinkProps) {
     const onClick = (e: MouseEvent) => {
-      console.log('link click', e.offsetX);
+      // console.log('link click', e.offsetX);
       e.preventDefault();
       window.location.replace(href);
     };

@@ -6,7 +6,7 @@ interface ButtonProps {
     label: string;
     background: string;
     styles: string;
-    type: string;
+    type?: "button" | "submit";
     onClick: () => void;
     onSubmit: () => void;
 }

@@ -1,70 +1,15 @@
 import Block from '../../utils/block';
 
-import Validator, { ValidationType } from '../../utils/validation';
+import { Validation } from '../../utils/validation';
 
 export class Registration extends Block {
   protected getStateFromProps() {
     this.state = {
       onReg: () => {
         // validation there
-        const loginData: Record<string, unknown> = {};
-
         const element = this.getContent();
         const inputs = element?.querySelectorAll('input');
-
-        Array.from(inputs).forEach((input) => {
-          loginData[input.name] = input.value;
-          const [flag, text] = Validator.validate(<ValidationType>input.name, input.value);
-
-          if ((input.name) === 'login') {
-            this.refs.login.refs.error.setProps({
-              isValid: flag,
-              validateMessage: text,
-            });
-          }
-
-          if ((input.name) === 'password') {
-            this.refs.password.refs.error.setProps({
-              isValid: flag,
-              validateMessage: text,
-            });
-          }
-
-          if ((input.name) === 'email') {
-            this.refs.email.refs.error.setProps({
-              isValid: flag,
-              validateMessage: text,
-            });
-          }
-
-          if ((input.name) === 'first_name') {
-            this.refs.first_name.refs.error.setProps({
-              isValid: flag,
-              validateMessage: text,
-            });
-          }
-
-          if ((input.name) === 'second_name') {
-            this.refs.second_name.refs.error.setProps({
-              isValid: flag,
-              validateMessage: text,
-            });
-          }
-
-          if ((input.name) === 'phone') {
-            this.refs.phone.refs.error.setProps({
-              isValid: flag,
-              validateMessage: text,
-            });
-          }
-
-          if ((input.name) === 'repeat_password') {
-            this.refs.repeat_password.refs.error.setProps({
-              isValid: flag,
-              validateMessage: text,
-            });
-          }
-        });
+        const loginData = Validation (inputs, this.refs);
 
         console.log('inputs/registration', loginData);
       },
