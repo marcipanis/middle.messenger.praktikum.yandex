@@ -6,7 +6,6 @@
 # “publish” is the directory to publish (relative to the root of your repo).
 
 [build]
-
    publish = "dist"
    command = "npm run build --no-cache"
 
@@ -14,4 +13,3 @@
 from="/*"
 to="/"
 status=200
-

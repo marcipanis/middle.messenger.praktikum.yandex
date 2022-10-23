@@ -1,0 +1,152 @@
+@import "../../variables.css";
+
+.button-form {
+  font-family: Raleway, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--message-color);
+  line-height: 1.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  height: 50px;
+}
+
+.button-account-form {
+  font-family: Raleway, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--button-background);
+  line-height: 1.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px;
+}
+
+.button-chat-form {
+  font-family: Raleway, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--button-background);
+  line-height: 1.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button-wrap {
+  width: 100%;
+  display: block;
+  position: relative;
+  z-index: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 auto;
+  flex-grow: 1;
+}
+
+.button-background-main {
+  position: absolute;
+  z-index: -1;
+  width: 300%;
+  height: 100%;
+  background: var(--button-background);
+  top: 0;
+  left: -100%;
+  transition: all 0.4s;
+}
+
+.button-background-purple {
+  position: absolute;
+  z-index: -1;
+  width: 300%;
+  height: 100%;
+  background: var(--button-background-purple);
+  top: 0;
+  left: -100%;
+  transition: all 0.4s;
+}
+
+.button-background-default {
+  background: none;
+}
+
+.button-background-left-arrow {
+  background-image: url("../../../static/images/icons/left-arrow.svg");
+  background-repeat: no-repeat;
+  background-size: 3vw;
+  background-position-y: center;
+  background-position-x: center;
+  cursor: pointer;
+}
+
+.button-background-right-arrow {
+  background-image: url("../../../static/images/icons/right-arrow.svg");
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  height: 40px;
+  min-width: 60px;
+  background-position-y: center;
+  background-position-x: center;
+  cursor: pointer;
+}
+
+.button-background-exit-right {
+  background-image: url("../../../static/images/icons/exit-right.svg");
+  background-repeat: no-repeat;
+  height: 30px;
+  min-width: 30px;
+  background-position-y: center;
+  background-position-x: center;
+  cursor: pointer;
+}
+
+.button-background-add {
+  background-image: url("../../../static/images/icons/add.svg");
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  height: 40px;
+  min-width: 60px;
+  background-position-y: center;
+  background-position-x: center;
+  cursor: pointer;
+}
+
+.button-span-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.button-background-clip {
+  background-image: url("../../../static/images/icons/clip.svg");
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  height: 40px;
+  min-width: 60px;
+  background-position-y: center;
+  background-position-x: center;
+  cursor: pointer;
+}
+
+.button-background-dots {
+  background-image: url("../../../static/images/icons/dots.svg");
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  height: 40px;
+  min-width: 60px;
+  background-position-y: center;
+  background-position-x: center;
+  cursor: pointer;
+}

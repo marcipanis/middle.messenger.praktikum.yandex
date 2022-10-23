@@ -1,0 +1,27 @@
+.error-wrap {
+  width: 500px;
+  overflow: hidden;
+  padding: 45px 55px 34px;
+}
+
+.error-title {
+  display: block;
+  font-family: Raleway, sans-serif;
+  font-weight: 700;
+  font-size: 60px;
+  color: #333;
+  line-height: 1.2;
+  text-align: center;
+  padding-bottom: 34px;
+}
+
+.error-text {
+  display: block;
+  font-family: Raleway, sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  color: #333;
+  line-height: 1.2;
+  text-align: center;
+  padding-bottom: 34px;
+}

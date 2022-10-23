@@ -1,0 +1,58 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "airbnb"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "settings": {
+        "max-len": 150,
+        "import/extensions": [".js", ".jsx", ".ts", ".tsx", ".mjs",".jpg", ".svg", ".hbs"],
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx", ".jpg", ".svg", ".hbs"]
+            }
+        }
+    },
+    "rules": {
+        "max-len": [2, 150],
+        "@typescript-eslint/no-unused-vars": 2,
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-explicit-any": ["off"],
+        "no-shadow": ["off"],
+        "prefer-promise-reject-errors": ["off"],
+        "no-use-before-define": ["off"],
+        "no-underscore-dangle": ["off"],
+        "@typescript-eslint/no-this-alias": ["off"],
+        "class-methods-use-this": ["off"],
+        "no-param-reassign": ["off"],
+        "import/prefer-default-export": ["off"],
+        "no-console": ["off"],
+        "no-plusplus": ["off"],
+        "import/no-unresolved": 0,
+        "import/extensions": ["error", "ignorePackages", {
+            "js": "never",
+            "jsx": "never",
+            "ts": "never",
+            "tsx": "never",
+            "mjs": "never",
+            "": "never"
+        }]
+    },
+    "ignorePatterns": [
+        "/dist/*",
+        "**/*.min.js",
+        "/node_modules"
+    ]
+}
