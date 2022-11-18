@@ -4,8 +4,8 @@ import { Validation } from '../../utils/validation';
 import { withUser } from '../account';
 
 export class RegistrationBase extends Block {
-  constructor() {
-    super();
+  constructor(...props: any) {
+    super({ ...props });
 
     this.setProps({
       onReg: this.onReg.bind(this),

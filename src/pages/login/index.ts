@@ -6,8 +6,8 @@ import { LoginData } from '../../api/loginApi';
 import { withUser } from '../account';
 
 export class LoginBase extends Block {
-  constructor() {
-    super();
+  constructor(...props: any) {
+    super({ ...props });
 
     this.setProps({
       onLogin: this.onLogin.bind(this),
