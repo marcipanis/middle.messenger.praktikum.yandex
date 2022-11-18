@@ -16,8 +16,6 @@ export class AccountChangePasswordBase extends Block {
         const inputs = element?.querySelectorAll('input');
         const [loginData, isValid] = Validation(inputs, this.refs);
 
-        console.log('inputs/AccountChangePassword', loginData);
-
         if (isValid) {
           await AccountController.changePassword(loginData as unknown as AccountPasswordData);
         }

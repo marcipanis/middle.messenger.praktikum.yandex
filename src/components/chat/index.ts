@@ -32,7 +32,7 @@ export class ChatBase extends Block {
         const dropdownChat = document.getElementById('dropdownChat') as HTMLElement;
         dropdownChat.classList.toggle('show');
 
-        window.onclick = function fn(event) {
+        window.onclick = function dpdw(event) {
           if (!(event.target as HTMLButtonElement).matches('.dropbtn')) {
             const dropdowns = document.getElementsByClassName('dropdown-content');
             let i: number;

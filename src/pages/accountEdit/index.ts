@@ -22,8 +22,6 @@ export class AccountEditBase extends Block {
         const inputs = element?.querySelectorAll('input');
         const [loginData, isValid] = Validation(inputs, this.refs);
 
-        console.log('inputs/AccountEdit', loginData);
-
         if (isValid) {
           if (this.avatarData instanceof FormData) {
             await AccountController.changeAvatar(this.avatarData);
@@ -40,7 +38,7 @@ export class AccountEditBase extends Block {
       {{#AccountLayout onClick = onClick}}
         {{#Form  formWrap="form-account-wrap" id="avatarForm"}}
 
-          {{{Avatar styles="avatar-default" avatar=avatar edit=true onClick=onAvatarClick }}}
+          {{{Avatar id="avatar" styles="avatar-default" avatar=avatar edit=true onClick=onAvatarClick }}}
 
           <span class="form-account-title">  {{ login }} </span>
 

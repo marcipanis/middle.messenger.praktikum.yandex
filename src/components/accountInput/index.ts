@@ -25,6 +25,8 @@ export class AccountInput extends Block {
         const { value } = input;
         const { name } = input;
         const [flag, text] = Validator.validate(<ValidationType>name, value);
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         this.refs.error.setProps({
           isValid: flag,
           validateMessage: text,
@@ -40,7 +42,7 @@ export class AccountInput extends Block {
         <div class="account-input-wrap">
             <div class="account-input-label-wrap">
                 <span class="account-input-label">{{title}}</span>
-                {{{Input
+                {{{Input id=id
                         value=value
                         title=title
                         styles=styles

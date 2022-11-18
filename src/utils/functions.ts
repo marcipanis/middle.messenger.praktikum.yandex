@@ -147,8 +147,6 @@ export function onAvatarChange(id: string): FormData {
     const frame = URL.createObjectURL(file);
     document.getElementById(id)!.style.backgroundImage = `url(${frame})`;
     document.getElementById(id)!.style.backgroundSize = 'cover';
-
-    this.avatarData = avatarData;
   };
   return avatarData;
 }
