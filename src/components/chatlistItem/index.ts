@@ -3,33 +3,30 @@ import Block from '../../utils/block';
 import './chatlistItem.css';
 
 interface ChatlistItemProps {
+    chatlistItemId: number;
     displayName: string;
     messageTime: Date;
     avatar?: string;
     message: string;
     messageCount?: number;
-    onClick: () => void;
+    selectedChat?: boolean;
 }
 
 export class ChatlistItem extends Block {
   static componentName = 'ChatlistItem';
 
-  constructor({ onClick, ...props }: ChatlistItemProps) {
-    super({
-      ...props, events: { click: onClick },
-    });
+  constructor({ ...props }: ChatlistItemProps) {
+    super({ ...props });
   }
 
   render(): string {
     // language=hbs
     return `
-            <div class="chatlist-item">
+            <div class="chatlist-item  
+                {{#if selectedChat}} chatlist-selected {{/if}}" 
+                {{#if chatlistItemId}} data-itemId="{{chatlistItemId}}" {{/if}} >
                 <div class="chatlist-item-avatar">
-                    {{#if avatar}}
-                        {{{Avatar styles="avatar-chatlist"}}}
-                    {{else}}
-                        {{{Avatar styles="avatar-chatlist-default"}}}
-                    {{/if}}
+                    {{{Avatar styles="avatar-chatlist-default" avatar=avatar}}}
                 </div>
 
                 <div class="chatlist-item-message">
@@ -38,7 +35,7 @@ export class ChatlistItem extends Block {
                         <div class="chatlist-item-message-title-right"> {{messageTime}} </div>
                     </div>
                     <div class="chatlist-item-message-text">
-                        <div class="chatlist-item-message-text-left"> {{message}} </div>
+                        <div class="chatlist-item-message-text-left"> {{user}}{{#if user}}:{{/if}} {{message}} </div>
                         <div class="chatlist-item-message-text-right">
                          {{#if messageCount}}
                             <div class="number-circle"> {{messageCount}} </div>

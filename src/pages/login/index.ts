@@ -1,26 +1,32 @@
 import Block from '../../utils/block';
-
 import { Validation } from '../../utils/validation';
 
-export class Login extends Block {
-  protected getStateFromProps() {
-    this.state = {
-      onLogin: () => {
-        // validation there
-        const element = this.getContent();
-        const inputs = element?.querySelectorAll('input');
-        const loginData = Validation (inputs, this.refs);
+import AuthController from '../../controllers/loginController';
+import { LoginData } from '../../api/loginApi';
+import { withUser } from '../account';
 
-        console.log('inputs/login', loginData);
-      },
+export class LoginBase extends Block {
+  constructor() {
+    super();
 
-    };
+    this.setProps({
+      onLogin: this.onLogin.bind(this),
+    });
+  }
+
+  async onLogin() {
+    // validation there
+    const element = this.getContent();
+    const inputs = element?.querySelectorAll('input');
+    const [loginData] = Validation(inputs, this.refs);
+
+    await AuthController.login(loginData as unknown as LoginData);
   }
 
   render() {
     // language=hbs
     return `
-      {{#Form  title="Вход" formWrap="form-login-wrap"}}
+      {{#Form  title="Вход" formWrap="form-login-wrap" id="loginForm"}}
         
         {{{WrappedInput
             title="Логин"
@@ -57,7 +63,7 @@ export class Login extends Block {
         {{{Link title="Регистрация"
             linkWrap="link-wrap"
             styles="link"
-            href="/registration.html"
+            href="/registration"
         }}}
 
       {{/Form}}
@@ -65,3 +71,5 @@ export class Login extends Block {
     `;
   }
 }
+
+export const Login = withUser(LoginBase);

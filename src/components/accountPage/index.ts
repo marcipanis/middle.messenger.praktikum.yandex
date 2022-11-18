@@ -4,6 +4,7 @@ import './accountLayout.css';
 
 interface AccountLayoutProps {
     label?: string;
+    // onClick: () => void;
 }
 
 export class AccountLayout extends Block {
@@ -18,10 +19,10 @@ export class AccountLayout extends Block {
     return `
             <div class="account-container">
                 <div class="account-button-container">
-                    {{{Button  styles="button-account-form button-background-left-arrow" }}}
+                    {{{Button  styles="button-account-form button-background-left-arrow" onClick=onClick }}}
                 </div>
                 <div class="account-form-container">
-                    <div data-layout=1></div>
+                   <div data-slot=1></div>
                 </div>
             </div>
       `;

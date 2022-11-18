@@ -6,6 +6,7 @@ export interface InputProps {
     onChange?: () => void;
     onFocus?: () => void;
     onBlur?: () => void;
+    id?: string,
     value?: string;
     styles?: string;
     type?: 'text' | 'password' | 'email' | 'phone';
@@ -27,7 +28,8 @@ export class Input extends Block {
   protected render(): string {
     // language=hbs
     return `
-          <input  value="{{value}}"
+          <input  id="{{id}}"
+                  value="{{value}}"
                   type="{{type}}"
                   name="{{name}}"
                   class="{{styles}}"

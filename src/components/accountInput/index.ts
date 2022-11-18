@@ -41,6 +41,7 @@ export class AccountInput extends Block {
             <div class="account-input-label-wrap">
                 <span class="account-input-label">{{title}}</span>
                 {{{Input
+                        value=value
                         title=title
                         styles=styles
                         type=type

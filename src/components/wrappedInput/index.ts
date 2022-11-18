@@ -25,6 +25,8 @@ export class WrappedInput extends Block {
         const { value } = input;
         const { name } = input;
         const [valid, text] = Validator.validate(<ValidationType>name, value);
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         this.refs.error.setProps({
           isValid: valid,
           validateMessage: text,
@@ -40,6 +42,8 @@ export class WrappedInput extends Block {
         <div class="input-wrap">
         <span class="input-label">{{title}}</span>
         {{{Input
+                id=id
+                value=value
                 title=title
                 styles=styles
                 type=type

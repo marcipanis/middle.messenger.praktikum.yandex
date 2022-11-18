@@ -8,6 +8,7 @@ interface LinkProps {
     href: string;
     background?: string;
     title?: string;
+    tooltip?: string;
     linkBroder?: string;
 }
 
@@ -15,7 +16,7 @@ export class Link extends Block {
   static componentName = 'Link';
 
   constructor({
-    linkWrap, styles, href, background, title, linkBroder,
+    linkWrap, styles, href, background, title, tooltip, linkBroder,
   }: LinkProps) {
     const onClick = (e: MouseEvent) => {
       // console.log('link click', e.offsetX);
@@ -24,7 +25,7 @@ export class Link extends Block {
     };
 
     super({
-      linkWrap, styles, href, background, title, linkBroder, events: { click: onClick },
+      linkWrap, styles, href, background, title, tooltip, linkBroder, events: { click: onClick },
     });
   }
 
@@ -32,7 +33,7 @@ export class Link extends Block {
     // language=hbs
     return `
             <div class="{{linkWrap}}">
-                <a class="{{styles}}" href="{{href}}">
+                <a class="{{styles}}" href="{{href}}" title="{{tooltip}}">
                     <div class="{{background}}"></div>
                     {{title}}
                 </a>

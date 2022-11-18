@@ -4,9 +4,10 @@ import './button.css';
 
 interface ButtonProps {
     label: string;
+    title?: string;
     background: string;
     styles: string;
-    type?: "button" | "submit";
+    type?: 'button' | 'submit';
     onClick: () => void;
     onSubmit: () => void;
 }
@@ -15,10 +16,10 @@ export class Button extends Block {
   static componentName = 'Button';
 
   constructor({
-    label, background, styles, type, onClick, onSubmit,
+    label, title, background, styles, type, onClick, onSubmit,
   }: ButtonProps) {
     super({
-      label, background, styles, type, events: { click: onClick, submit: onSubmit },
+      label, title, background, styles, type, events: { click: onClick, submit: onSubmit },
     });
   }
 
@@ -28,7 +29,7 @@ export class Button extends Block {
       <div class="button-container">
           <div class="button-wrap">
           <div class="{{background}}"></div>
-              <button  class="{{styles}}" type="{{type}}">
+              <button  class="{{styles}}" type="{{type}}" title="{{title}}">
               {{label}}
           </button>
           </div>
