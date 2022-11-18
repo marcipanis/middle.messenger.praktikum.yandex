@@ -4,10 +4,9 @@ import './accountLayout.css';
 
 interface AccountLayoutProps {
     label?: string;
-    // onClick: () => void;
 }
 
-export class AccountLayout extends Block {
+export class AccountLayout extends Block<AccountLayoutProps> {
   static componentName = 'AccountLayout';
 
   constructor({ ...props }: AccountLayoutProps) {

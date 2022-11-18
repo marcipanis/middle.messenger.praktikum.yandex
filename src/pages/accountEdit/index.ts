@@ -6,10 +6,16 @@ import AccountController from '../../controllers/accountController';
 import { AccountData } from '../../api/accountApi';
 import { onAvatarChange } from '../../utils/functions';
 
-export class AccountEditBase extends Block {
+interface AccountDataProps extends AccountData {
+  onClick: () => void;
+  onAvatarClick: () => void;
+  onSave: () => void;
+}
+
+export class AccountEditBase extends Block<AccountDataProps> {
   private avatarData: unknown;
 
-  constructor(props: any) {
+  constructor(props: AccountDataProps) {
     super({
       ...props,
       onClick: () => AccountController.toAccount(),

@@ -5,7 +5,7 @@ import './input.css';
 export interface InputProps {
     onChange?: () => void;
     onFocus?: () => void;
-    onBlur?: () => void;
+    onBlur?: (e: FocusEvent) => void;
     id?: string,
     value?: string;
     styles?: string;

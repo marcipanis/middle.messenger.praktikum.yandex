@@ -5,12 +5,15 @@ import AuthController from '../../controllers/loginController';
 import { LoginData } from '../../api/loginApi';
 import { withUser } from '../account';
 
-export class LoginBase extends Block {
-  constructor(...props: any) {
-    super({ ...props });
+interface LoginDataProps {
+  onLogin: () => void;
+}
 
-    this.setProps({
-      onLogin: this.onLogin.bind(this),
+export class LoginBase extends Block<LoginDataProps> {
+  constructor(...props: (LoginDataProps)[]) {
+    super({
+      ...props,
+      onLogin: () => this.onLogin(),
     });
   }
 

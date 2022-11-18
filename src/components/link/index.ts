@@ -10,9 +10,10 @@ interface LinkProps {
     title?: string;
     tooltip?: string;
     linkBroder?: string;
+    events: Record<string, unknown>;
 }
 
-export class Link extends Block {
+export class Link extends Block <LinkProps> {
   static componentName = 'Link';
 
   constructor({

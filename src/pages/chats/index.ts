@@ -4,13 +4,20 @@ import './chats.css';
 import { withUser } from '../account';
 
 import AuthController from '../../controllers/loginController';
-// eslint-disable-next-line import/no-named-as-default
 import ChatsController from '../../controllers/chatsController';
 import store from '../../utils/store';
 import { onModal } from '../../utils/functions';
 
-export class ChatsBase extends Block {
-  constructor(props: any) {
+interface ChatsBaseProps {
+  onLogout: () => void;
+  onAddChatModal: () => void;
+  onAddChat: () => void;
+  onItemClick: (e: Event) => void;
+  onChangeInputSearch: () => void;
+}
+
+export class ChatsBase extends Block<ChatsBaseProps> {
+  constructor(props: ChatsBaseProps) {
     super({
       ...props,
       onLogout: () => AuthController.logout(),

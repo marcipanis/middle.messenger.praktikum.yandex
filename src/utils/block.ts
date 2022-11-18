@@ -2,14 +2,15 @@ import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
 import EventBus from './eventBus';
 
-interface BlockMeta<P = any> {
-  props: P;
+// eslint-disable-next-line no-undef
+type Events = Values<typeof Block.EVENTS>;
+
+export interface BlockClass<P> extends Function {
+  new (props: P): Block<P>;
+  componentName?: string;
 }
 
-// eslint-disable-next-line no-undef
-type Events = Values <typeof Block.EVENTS>;
-
-export default class Block<P = any> { // class Block<T extends Record<string, any>> {  // <P = any>
+export default class Block<P = any> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -21,14 +22,10 @@ export default class Block<P = any> { // class Block<T extends Record<string, an
 
   public id = nanoid(6);
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
-  private readonly _meta: BlockMeta;
-
   // eslint-disable-next-line no-undef
   protected _element: Nullable<HTMLElement> = null;
 
-  protected props: Readonly<P>; // protected readonly props: P;
+  protected props: P;
 
   protected children: { [id: string]: Block } = {};
 
@@ -40,10 +37,6 @@ export default class Block<P = any> { // class Block<T extends Record<string, an
 
   public constructor(props?: P) {
     const eventBus = new EventBus<Events>();
-
-    this._meta = {
-      props,
-    };
 
     this.getStateFromProps(props);
 

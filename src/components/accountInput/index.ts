@@ -12,7 +12,7 @@ interface AccountInputProps extends InputProps {
     isValid: boolean;
 }
 
-export class AccountInput extends Block {
+export class AccountInput extends Block <AccountInputProps> {
   static componentName = 'AccountInput';
 
   constructor({
