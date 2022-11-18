@@ -14,13 +14,27 @@ interface ChatProps {
     userId: number;
 }
 
+interface ChatBaseProps extends ChatProps{
+  onDropdown: () => void;
+  onModalOpenAddUser: () => void;
+  onModalOpenDelUser: () => void;
+  onModalOpenAddAvatar: () => void;
+  onAvatarClick: () => void;
+  onModalOpenDelChat: () => void;
+  onDropdownAddAvatar: () => void;
+  onDropdownAddUser: () => void;
+  onDropdownDelUser: () => void;
+  onDropdownDelChat: () => void;
+  onMessage: (e: any) => void;
+}
+
 export function selectedChat(): number {
   const state = store.getState();
   const currentChat = state.selected!.selectedChat;
   return currentChat!;
 }
 
-export class ChatBase extends Block {
+export class ChatBase extends Block<ChatBaseProps> {
   static componentName = 'Chat';
 
   private avatarData: unknown;
@@ -54,7 +68,7 @@ export class ChatBase extends Block {
       onModalOpenDelChat: () => onModal('ModalDelChat'),
       onDropdownAddAvatar: async () => {
         if (this.avatarData instanceof FormData) {
-          await chatsController.changeAvatar(this.props.selectedChat, this.avatarData);
+          await chatsController.changeAvatar(<number> this.props.selectedChat, this.avatarData);
         }
       },
       onDropdownAddUser: async () => {
@@ -86,7 +100,7 @@ export class ChatBase extends Block {
         const currentChat = selectedChat();
         chatsController.delete(currentChat!);
       },
-      onMessage: async (e: { preventDefault: () => void; }) => {
+      onMessage: async (e) => {
         e.preventDefault();
         const messageData = new FormData(document.getElementById('messageForm') as HTMLFormElement);
         const formData = formatFormData(messageData);
