@@ -23,6 +23,7 @@
   "homepage": "https://github.com/marcipanis/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
     "@babel/core": "7.17.8",
+    "@parcel/babel-preset-env": "2.8.0",
     "@parcel/plugin": "2.7.0",
     "@parcel/transformer-inline-string": "2.7.0",
     "@parcel/transformer-sass": "2.7.0",
@@ -37,7 +38,6 @@
     "express": "4.18.1",
     "mocha": "10.1.0",
     "parcel": "2.7.0",
-    "parcel-transformer-babel-set-preset-env-target": "2.0.0-alpha.3.3",
     "postcss": "8.4.12",
     "postcss-import": "14.1.0",
     "prettier": "2.7.1",
