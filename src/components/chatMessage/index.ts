@@ -10,9 +10,10 @@ interface MessageProps {
 }
 
 export class Message extends Block<MessageProps> {
-  // eslint-disable-next-line no-useless-constructor
-  constructor(...props: MessageProps[]) {
-    super(...props);
+  static componentName = 'Message';
+
+  constructor({ ...props }: MessageProps) {
+    super({ ...props });
   }
 
   protected render(): string {
