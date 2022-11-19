@@ -10,6 +10,11 @@ interface MessageProps {
 }
 
 export class Message extends Block<MessageProps> {
+  // eslint-disable-next-line no-useless-constructor
+  constructor(...props: MessageProps[]) {
+    super(...props);
+  }
+
   protected render(): string {
     // language=hbs
     return `
