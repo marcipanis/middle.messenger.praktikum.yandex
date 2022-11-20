@@ -2,6 +2,8 @@
 import { isEqual, set } from './functions';
 import { UserData } from '../api/loginApi';
 import EventBus from './eventBus';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { BlockClass } from './block';
 import { ChatData, ChatMessages, SelectedData } from '../api/chatsApi';
 
