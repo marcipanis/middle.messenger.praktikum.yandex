@@ -12,9 +12,10 @@ export interface InputProps {
     type?: 'text' | 'password' | 'email' | 'phone';
     name: string;
     placeholder?: string;
+    events: Record<string, unknown>;
 }
 
-export class Input extends Block {
+export class Input extends Block<InputProps> {
   static componentName = 'Input';
 
   constructor({

@@ -1,14 +1,17 @@
 import Block from '../../utils/block';
 import AuthController, { ControllerRegistrationData } from '../../controllers/loginController';
 import { Validation } from '../../utils/validation';
-import { withUser } from '../account';
+import { withUser } from '../../utils/store';
 
-export class RegistrationBase extends Block {
-  constructor(...props: any) {
-    super({ ...props });
+interface RegistrationDataProps {
+  onReg: () => void;
+}
 
-    this.setProps({
-      onReg: this.onReg.bind(this),
+export class RegistrationBase extends Block<RegistrationDataProps> {
+  constructor({ ...props }: RegistrationDataProps) {
+    super({
+      ...props,
+      onReg: () => this.onReg(),
     });
   }
 
@@ -17,8 +20,6 @@ export class RegistrationBase extends Block {
     const element = this.getContent();
     const inputs = element?.querySelectorAll('input');
     const [loginData, isValid] = Validation(inputs, this.refs);
-
-    console.log('inputs/registration', loginData);
 
     if (isValid) {
       await AuthController.registration(loginData as unknown as ControllerRegistrationData);

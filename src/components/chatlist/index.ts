@@ -5,13 +5,14 @@ import './chatlist.css';
 interface ChatlistProps {
     label?: string;
     onClick: () => void;
+    events: Record<string, unknown>;
 }
 
-export class Chatlist extends Block {
+export class Chatlist extends Block<ChatlistProps> {
   static componentName = 'Chatlist';
 
-  constructor({ onClick, ...props }: ChatlistProps) {
-    super({ ...props, events: { click: onClick } });
+  constructor({ ...props }: ChatlistProps) {
+    super({ ...props, events: { click: props.onClick } });
   }
 
   render(): string {

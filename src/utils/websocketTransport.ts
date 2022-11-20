@@ -80,7 +80,11 @@ export class ChatWebSocket {
     });
 
     this.socket.addEventListener('message', (event) => {
-      this.eventBus().emit(ChatWebSocket.EVENTS.MESSAGE, JSON.parse(event.data));
+      const data = JSON.parse(event.data);
+      if (data.type && data.type === 'pong') {
+        return;
+      }
+      this.eventBus().emit(ChatWebSocket.EVENTS.MESSAGE, data);
     });
 
     this.socket.addEventListener('error', (event) => {

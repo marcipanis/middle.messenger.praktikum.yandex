@@ -5,7 +5,7 @@ type ModalProps = {
     id: string;
 }
 
-export class Modal extends Block {
+export class Modal extends Block<ModalProps> {
   static componentName = 'Modal';
 
   constructor({ ...props }: ModalProps) {

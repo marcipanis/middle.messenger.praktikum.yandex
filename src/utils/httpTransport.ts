@@ -1,3 +1,5 @@
+import { queryStringify } from './functions';
+
 export enum Method {
     get = 'get',
     post = 'post',
@@ -17,6 +19,8 @@ type Options = {
     data?: any;
 };
 
+type HTTPMethod = (url: string, data?: unknown, type?: ContentType) => Promise<unknown>;
+
 export default class HTTPTransport {
   static API_URL = 'https://ya-praktikum.tech/api/v2';
 
@@ -27,52 +31,39 @@ export default class HTTPTransport {
   }
 
   // eslint-disable-next-line default-param-last
-  public get<Response>(path = '/', data?: unknown, type: ContentType = ContentType.json): Promise<Response> {
-    return this.request<Response>(this.endpoint + path, {
-      method: Method.get,
-      type,
-      data,
-    });
-  }
+  public get: HTTPMethod = (path = '/', data?, type = ContentType.json) => (
+    this.request(this.endpoint + path, { type, data, method: Method.get })
+  );
 
-  public post<Response = void>(path: string, data?: unknown, type: ContentType = ContentType.json): Promise<Response> {
-    return this.request<Response>(this.endpoint + path, {
-      method: Method.post,
-      type,
-      data,
-    });
-  }
+  public post: HTTPMethod = (path, data?, type = ContentType.json) => (
+    this.request(this.endpoint + path, { type, data, method: Method.post })
+  );
 
-  public put<Response = void>(path: string, data: unknown, type: ContentType = ContentType.json): Promise<Response> {
-    return this.request<Response>(this.endpoint + path, {
-      method: Method.put,
-      type,
-      data,
-    });
-  }
+  public put: HTTPMethod = (path, data, type = ContentType.json) => (
+    this.request(this.endpoint + path, { type, data, method: Method.put })
+  );
 
-  public patch<Response = void>(path: string, data: unknown, type: ContentType = ContentType.json): Promise<Response> {
-    return this.request<Response>(this.endpoint + path, {
-      method: Method.patch,
-      type,
-      data,
-    });
-  }
+  public patch: HTTPMethod = (path, data, type = ContentType.json) => (
+    this.request(this.endpoint + path, { type, data, method: Method.patch })
+  );
 
-  public delete<Response>(path: string, data?: unknown, type: ContentType = ContentType.json): Promise<Response> {
-    return this.request<Response>(this.endpoint + path, {
-      method: Method.delete,
-      data,
-      type,
-    });
-  }
+  public delete: HTTPMethod = (path, data?, type = ContentType.json) => (
+    this.request(this.endpoint + path, { type, data, method: Method.delete })
+  );
 
   private request<Response>(url: string, options: Options = { method: Method.get, type: ContentType.json }): Promise<Response> {
     const { method, type, data } = options;
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      xhr.open(method, url);
+      const isGet = method === Method.get;
+
+      xhr.open(
+        method,
+        isGet && !!data
+          ? `${url}${queryStringify(data)}`
+          : url,
+      );
 
       xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {

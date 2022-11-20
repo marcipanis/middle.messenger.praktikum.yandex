@@ -10,17 +10,14 @@ interface ButtonProps {
     type?: 'button' | 'submit';
     onClick: () => void;
     onSubmit: () => void;
+    events: Record<string, unknown>;
 }
 
-export class Button extends Block {
+export class Button extends Block<ButtonProps> {
   static componentName = 'Button';
 
-  constructor({
-    label, title, background, styles, type, onClick, onSubmit,
-  }: ButtonProps) {
-    super({
-      label, title, background, styles, type, events: { click: onClick, submit: onSubmit },
-    });
+  constructor({ ...props }: ButtonProps) {
+    super({ ...props, events: { click: props.onClick, submit: props.onSubmit } });
   }
 
   render(): string {

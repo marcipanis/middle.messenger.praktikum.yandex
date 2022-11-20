@@ -1,7 +1,7 @@
 import Block from '../../utils/block';
 
 import { Validation } from '../../utils/validation';
-import { withUser } from '../account';
+import { withUser } from '../../utils/store';
 import AccountController from '../../controllers/accountController';
 import { AccountData } from '../../api/accountApi';
 import { onAvatarChange } from '../../utils/functions';

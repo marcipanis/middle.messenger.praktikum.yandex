@@ -3,14 +3,14 @@ import { Validation } from '../../utils/validation';
 
 import AuthController from '../../controllers/loginController';
 import { LoginData } from '../../api/loginApi';
-import { withUser } from '../account';
+import { withUser } from '../../utils/store';
 
 interface LoginDataProps {
   onLogin: () => void;
 }
 
 export class LoginBase extends Block<LoginDataProps> {
-  constructor(...props: (LoginDataProps)[]) {
+  constructor({ ...props }: LoginDataProps) {
     super({
       ...props,
       onLogin: () => this.onLogin(),

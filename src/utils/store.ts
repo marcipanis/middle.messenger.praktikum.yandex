@@ -2,7 +2,7 @@
 import { isEqual, set } from './functions';
 import { UserData } from '../api/loginApi';
 import EventBus from './eventBus';
-import Block from './block';
+import { BlockClass } from './block';
 import { ChatData, ChatMessages, SelectedData } from '../api/chatsApi';
 
 export enum StoreEvents {
@@ -36,11 +36,14 @@ export class Store extends EventBus {
 
 const store = new Store();
 
-export const withStore = (mapStateToProps: (state: StoreData) => Record<string, unknown>) => (Component: typeof Block) => {
-  let state: any;
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+export const withStore = (mapStateToProps: (state: StoreData) => Record<string, unknown>) => (Component: typeof BlockClass) => {
+  let state: Record<string, unknown>;
   return class extends Component {
-    constructor(props: any) {
+    public static componentName = Component.componentName || Component.name;
+
+    constructor(props: Record<string, unknown>) {
       state = mapStateToProps(store.getState());
 
       super({ ...props, ...state });
@@ -49,6 +52,8 @@ export const withStore = (mapStateToProps: (state: StoreData) => Record<string, 
         const newState = mapStateToProps(store.getState());
 
         if (!isEqual(state, newState)) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           this.setProps({
             ...newState,
           });
@@ -57,5 +62,12 @@ export const withStore = (mapStateToProps: (state: StoreData) => Record<string, 
     }
   };
 };
+
+export const withUser = withStore((state) => ({
+  ...state.currentUser,
+  ...state.chats,
+  ...state.messages,
+  ...state.selected,
+}));
 
 export default store;

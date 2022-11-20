@@ -10,9 +10,10 @@ interface WrappedInputProps extends InputProps {
     validationType: ValidationType;
     validateMessage: string;
     isValid: boolean;
+    onCheck?: (e: FocusEvent) => void;
 }
 
-export class WrappedInput extends Block {
+export class WrappedInput extends Block<WrappedInputProps> {
   static componentName = 'WrappedInput';
 
   constructor({

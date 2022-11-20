@@ -1,11 +1,10 @@
 import Block from '../../utils/block';
 
 import './chats.css';
-import { withUser } from '../account';
+import store, { withUser } from '../../utils/store';
 
 import AuthController from '../../controllers/loginController';
 import ChatsController from '../../controllers/chatsController';
-import store from '../../utils/store';
 import { onModal } from '../../utils/functions';
 
 interface ChatsBaseProps {

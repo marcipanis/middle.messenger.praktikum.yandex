@@ -6,14 +6,15 @@ interface AvatarProps {
   edit?: boolean,
   styles: string,
   onClick?: () => void;
+  events: Record<string, unknown>;
 }
 
-export class Avatar extends Block {
+export class Avatar extends Block<AvatarProps> {
   static componentName = 'Avatar';
 
-  constructor({ ...props }: AvatarProps) {
+  constructor({ onClick, ...props }: AvatarProps) {
     super({
-      ...props, events: { click: props.onClick },
+      ...props, events: { click: onClick },
     });
   }
 

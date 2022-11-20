@@ -5,9 +5,10 @@ import './form.css';
 interface FormProps {
   formWrap: string;
   title: string;
+  events: Record<string, unknown>;
 }
 
-export class Form extends Block {
+export class Form extends Block<FormProps> {
   static componentName = 'Form';
 
   constructor(props: FormProps) {

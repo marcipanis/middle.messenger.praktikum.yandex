@@ -1,11 +1,16 @@
 import Block from '../../utils/block';
 
 import { Validation } from '../../utils/validation';
-import { withUser } from '../account';
+import { withUser } from '../../utils/store';
 import AccountController from '../../controllers/accountController';
 import { AccountPasswordData } from '../../api/accountApi';
 
-export class AccountChangePasswordBase extends Block {
+interface AccountChangePasswordBaseProps extends AccountPasswordData{
+  onReg?: () => void;
+  onClick?: () => void;
+}
+
+export class AccountChangePasswordBase extends Block<AccountChangePasswordBaseProps> {
   constructor(props: any) {
     super({
       ...props,

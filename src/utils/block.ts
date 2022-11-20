@@ -33,14 +33,14 @@ export default class Block<P = any> {
 
   protected state: any = {};
 
-  protected refs: { [key: string]: Record<string, Block<any>> } = {}; // public refs: { [key: string]: Block } = {};
+  protected refs: { [key: string]: Record<string, Block> } = {};
 
   public constructor(props?: P) {
     const eventBus = new EventBus<Events>();
 
     this.getStateFromProps(props);
 
-    this.props = props || ({} as P); // this.props = this._makePropsProxy(props || ({} as P));
+    this.props = props || ({} as P); // this._makePropsProxy(props || ({} as P));
     this.state = this._makePropsProxy(this.state);
 
     this.eventBus = () => eventBus;
@@ -153,7 +153,7 @@ export default class Block<P = any> {
     return this.element!;
   }
 
-  _makePropsProxy(props: any): any {
+  _makePropsProxy(props: P): any {
     const self = this;
 
     return new Proxy(props as unknown as object, {

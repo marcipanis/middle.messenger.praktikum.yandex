@@ -1,11 +1,16 @@
 import Block from '../../utils/block';
-import { withStore } from '../../utils/store';
-
+import { withUser } from '../../utils/store';
+import { AccountData } from '../../api/accountApi';
 import AuthController from '../../controllers/loginController';
 import AccountController from '../../controllers/accountController';
 
-class AccountBase extends Block {
-  constructor(props: any) {
+interface AccountBaseProps extends AccountData{
+  onLogout?: () => void;
+  onClick?: () => void;
+}
+
+class AccountBase extends Block<AccountBaseProps> {
+  constructor({ ...props }: AccountBaseProps) {
     super({
       ...props,
       onLogout: () => AuthController.logout(),
@@ -91,9 +96,5 @@ class AccountBase extends Block {
     `;
   }
 }
-
-export const withUser = withStore((state) => ({
-  ...state.currentUser, ...state.chats, ...state.messages, ...state.selected,
-}));
 
 export const Account = withUser(AccountBase);
