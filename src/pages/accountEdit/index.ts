@@ -1,33 +1,52 @@
 import Block from '../../utils/block';
-import './accountEdit.css';
 
 import { Validation } from '../../utils/validation';
+import { withUser } from '../../utils/store';
+import AccountController from '../../controllers/accountController';
+import { AccountData } from '../../api/accountApi';
+import { onAvatarChange } from '../../utils/functions';
 
-export class AccountEdit extends Block {
-  protected getStateFromProps() {
-    this.state = {
-      onSave: () => {
+interface AccountDataProps extends AccountData {
+  onClick: () => void;
+  onAvatarClick: () => void;
+  onSave: () => void;
+}
+
+export class AccountEditBase extends Block<AccountDataProps> {
+  private avatarData: unknown;
+
+  constructor(props: AccountDataProps) {
+    super({
+      ...props,
+      onClick: () => AccountController.toAccount(),
+      onAvatarClick: async () => {
+        this.avatarData = onAvatarChange('avatar');
+      },
+      onSave: async () => {
         // validation there
         const element = this.getContent();
         const inputs = element?.querySelectorAll('input');
-        const loginData = Validation (inputs, this.refs);
+        const [loginData, isValid] = Validation(inputs, this.refs);
 
-        console.log('inputs/AccountEdit', loginData);
+        if (isValid) {
+          if (this.avatarData instanceof FormData) {
+            await AccountController.changeAvatar(this.avatarData);
+          }
+          await AccountController.changeAccount(loginData as unknown as AccountData);
+        }
       },
-
-    };
+    });
   }
 
   render() {
     // language=hbs
     return `
-      {{#AccountLayout}}
-        {{#Form  formWrap="form-account-wrap"}}
+      {{#AccountLayout onClick = onClick}}
+        {{#Form  formWrap="form-account-wrap" id="avatarForm"}}
 
-          {{#Avatar styles="avatar-default"}}
-            <label for="avatar" class="input-avatar-label">Поменять аватар</label>
-            <input type="file" class="input-avatar" id="avatar" name="avatar">
-          {{/Avatar}}
+          {{{Avatar id="avatar" styles="avatar-default" avatar=avatar edit=true onClick=onAvatarClick }}}
+
+          <span class="form-account-title">  {{ login }} </span>
 
           {{{AccountInput title="Почта"
                           styles="account-input"
@@ -36,6 +55,7 @@ export class AccountEdit extends Block {
                           placeholder="pupkin@yandex.ru"
                           ref="email"
                           id="email"
+                          value=email
                           onFocus=onFocus
                           onBlur=onBlur
                           onChange=onChange
@@ -48,6 +68,7 @@ export class AccountEdit extends Block {
                           placeholder="pupkin"
                           ref="login"
                           id="login"
+                          value=login
                           onFocus=onFocus
                           onBlur=onBlur
                           onChange=onChange
@@ -60,6 +81,7 @@ export class AccountEdit extends Block {
                           placeholder="Василий"
                           ref="first_name"
                           id="first_name"
+                          value=first_name
                           onFocus=onFocus
                           onBlur=onBlur
                           onChange=onChange
@@ -72,6 +94,7 @@ export class AccountEdit extends Block {
                         placeholder="Пупкин"
                         ref="second_name"
                         id="second_name"
+                        value=second_name
                         onFocus=onFocus
                         onBlur=onBlur
                         onChange=onChange
@@ -84,6 +107,7 @@ export class AccountEdit extends Block {
                         placeholder="Василий"
                         ref="display_name"
                         id="display_name"
+                        value=display_name
                         onFocus=onFocus
                         onBlur=onBlur
                         onChange=onChange
@@ -96,11 +120,11 @@ export class AccountEdit extends Block {
                           placeholder="8 (909) 967 30 30"
                           ref="phone"
                           id="phone"
+                          value=phone
                           onFocus=onFocus
                           onBlur=onBlur
                           onChange=onChange
           }}}
-          
 
         {{{Button label="Сохранить"
                   styles="button-form"
@@ -116,3 +140,5 @@ export class AccountEdit extends Block {
     `;
   }
 }
+
+export const AccountEdit = withUser(AccountEditBase);

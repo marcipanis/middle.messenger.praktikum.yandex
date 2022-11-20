@@ -5,9 +5,10 @@ import './form.css';
 interface FormProps {
   formWrap: string;
   title: string;
+  events: Record<string, unknown>;
 }
 
-export class Form extends Block {
+export class Form extends Block<FormProps> {
   static componentName = 'Form';
 
   constructor(props: FormProps) {
@@ -24,9 +25,9 @@ export class Form extends Block {
       <div class="container">
         <div class="container-flex-wrap">
               <div class="{{formWrap}}">
-                <form class="form">
+                <form class="form"  id="{{id}}">
                   <span class="form-title"> {{title}}</span>
-                  <div data-layout=1></div>
+                  <div data-slot=1></div>
                 </form>
               </div>
         </div>

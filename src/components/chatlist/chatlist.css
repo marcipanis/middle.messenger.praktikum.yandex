@@ -1,0 +1,10 @@
+.chatlist-items-container {
+  overflow: auto;
+  max-height: 75vh;
+  overflow-y: scroll;
+  padding-right: 10px;
+}
+
+.chatlist-items-container::-webkit-scrollbar {
+  display: none;
+}

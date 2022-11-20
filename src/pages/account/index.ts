@@ -1,52 +1,92 @@
 import Block from '../../utils/block';
+import { withUser } from '../../utils/store';
+import { AccountData } from '../../api/accountApi';
+import AuthController from '../../controllers/loginController';
+import AccountController from '../../controllers/accountController';
 
-type AccountPageProps = {
-  dataName: string;
-  data: { name: string; value: string;}[];
+interface AccountBaseProps extends AccountData{
+  onLogout?: () => void;
+  onClick?: () => void;
 }
 
-export class Account extends Block {
-  constructor({ dataName, data }: AccountPageProps) {
-    super({ dataName, data });
+class AccountBase extends Block<AccountBaseProps> {
+  constructor({ ...props }: AccountBaseProps) {
+    super({
+      ...props,
+      onLogout: () => AuthController.logout(),
+      onClick: () => AccountController.toCharts(),
+    });
   }
 
   render() {
     // language=hbs
     return `
-      {{#AccountLayout}}
+      {{#AccountLayout onClick = onClick}}
         {{#Form  formWrap="form-account-wrap"}}
 
-          {{{Avatar styles="avatar-default"}}}
+          {{{Avatar styles="avatar-default" avatar=avatar }}}
 
-          <span class="form-account-title">  {{dataName}} </span>
+          <span class="form-account-title">  {{ login }} </span>
 
           <ul class="account-input-wrap">
-            {{#each data}}
+           
               <li class="account-input-wrap">
                 <div class="account-input-label-wrap">
-                  <span class="account-input-label">{{this.name}}</span>
-                  <span class="account-input">{{this.value}}</span>
+                  <span class="account-input-label">Почта</span>
+                  <span class="account-input">{{email}}</span>
                 </div>
                 <div class="account-input-border"></div>
               </li>
-            {{/each}}
+              <li class="account-input-wrap">
+                  <div class="account-input-label-wrap">
+                      <span class="account-input-label">Логин</span>
+                      <span class="account-input">{{login}}</span>
+                  </div>
+                  <div class="account-input-border"></div>
+              </li>
+              <li class="account-input-wrap">
+                  <div class="account-input-label-wrap">
+                      <span class="account-input-label">Имя</span>
+                      <span class="account-input">{{first_name}}</span>
+                  </div>
+                  <div class="account-input-border"></div>
+              </li>
+              <li class="account-input-wrap">
+                  <div class="account-input-label-wrap">
+                      <span class="account-input-label">Фамилия</span>
+                      <span class="account-input">{{second_name}}</span>
+                  </div>
+                  <div class="account-input-border"></div>
+              </li>
+              <li class="account-input-wrap">
+                  <div class="account-input-label-wrap">
+                      <span class="account-input-label">Имя в чате</span>
+                      <span class="account-input">{{display_name}}</span>
+                  </div>
+                  <div class="account-input-border"></div>
+              </li>
+              <li class="account-input-wrap">
+                  <div class="account-input-label-wrap">
+                      <span class="account-input-label">Телефон</span>
+                      <span class="account-input">{{phone}}</span>
+                  </div>
+                  <div class="account-input-border"></div>
+              </li>
           </ul>
 
           <div class="link-wrap">
             {{{Link title="Изменить данные"
                      styles="link link-decor-marine"
-                     href="/accountEdit.html"
+                     href="/accountEdit"
                      linkBorder="link-decor-border"}}}
 
             {{{Link title="Изменить пароль"
                      styles="link link-decor-marine"
-                     href="/accountChangePassword.html"
+                     href="/accountChangePassword"
                      linkBorder="link-decor-border"}}}
-
-
-            {{{Link title="Выйти"
-                     styles="link link-decor-red"
-                     href="/"}}}
+                
+            {{{Button label="Выйти" styles="link link-decor-red" onClick=onLogout}}}
+            
           </div>
 
         {{/Form}}
@@ -56,3 +96,5 @@ export class Account extends Block {
     `;
   }
 }
+
+export const Account = withUser(AccountBase);

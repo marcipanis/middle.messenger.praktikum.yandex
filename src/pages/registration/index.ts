@@ -1,20 +1,29 @@
 import Block from '../../utils/block';
-
+import AuthController, { ControllerRegistrationData } from '../../controllers/loginController';
 import { Validation } from '../../utils/validation';
+import { withUser } from '../../utils/store';
 
-export class Registration extends Block {
-  protected getStateFromProps() {
-    this.state = {
-      onReg: () => {
-        // validation there
-        const element = this.getContent();
-        const inputs = element?.querySelectorAll('input');
-        const loginData = Validation (inputs, this.refs);
+interface RegistrationDataProps {
+  onReg: () => void;
+}
 
-        console.log('inputs/registration', loginData);
-      },
+export class RegistrationBase extends Block<RegistrationDataProps> {
+  constructor({ ...props }: RegistrationDataProps) {
+    super({
+      ...props,
+      onReg: () => this.onReg(),
+    });
+  }
 
-    };
+  async onReg() {
+    // validation there
+    const element = this.getContent();
+    const inputs = element?.querySelectorAll('input');
+    const [loginData, isValid] = Validation(inputs, this.refs);
+
+    if (isValid) {
+      await AuthController.registration(loginData as unknown as ControllerRegistrationData);
+    }
   }
 
   render() {
@@ -97,10 +106,10 @@ export class Registration extends Block {
         {{{WrappedInput title="Пароль (еще раз)"
             styles="input input-icon-left input-password"
             type="password"
-            name="repeat_password"
+            name="repeatPassword"
             placeholder="Пароль"
-            ref="repeat_password"
-            id="repeat_password"
+            ref="repeatPassword"
+            id="repeatPassword"
             onFocus=onFocus
             onBlur=onBlur
             onChange=onChange
@@ -115,10 +124,11 @@ export class Registration extends Block {
         {{{Link title="Войти"
             linkWrap="link-wrap"
             styles="link"
-            href="/login.html"}}}
+            href="/"}}}
         
       {{/Form}}
-
     `;
   }
 }
+
+export const Registration = withUser(RegistrationBase);

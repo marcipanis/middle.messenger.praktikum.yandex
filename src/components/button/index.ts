@@ -4,22 +4,20 @@ import './button.css';
 
 interface ButtonProps {
     label: string;
+    title?: string;
     background: string;
     styles: string;
-    type?: "button" | "submit";
+    type?: 'button' | 'submit';
     onClick: () => void;
     onSubmit: () => void;
+    events: Record<string, unknown>;
 }
 
-export class Button extends Block {
+export class Button extends Block<ButtonProps> {
   static componentName = 'Button';
 
-  constructor({
-    label, background, styles, type, onClick, onSubmit,
-  }: ButtonProps) {
-    super({
-      label, background, styles, type, events: { click: onClick, submit: onSubmit },
-    });
+  constructor({ ...props }: ButtonProps) {
+    super({ ...props, events: { click: props.onClick, submit: props.onSubmit } });
   }
 
   render(): string {
@@ -28,7 +26,7 @@ export class Button extends Block {
       <div class="button-container">
           <div class="button-wrap">
           <div class="{{background}}"></div>
-              <button  class="{{styles}}" type="{{type}}">
+              <button  class="{{styles}}" type="{{type}}" title="{{title}}">
               {{label}}
           </button>
           </div>

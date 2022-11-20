@@ -23,17 +23,23 @@
   "homepage": "https://github.com/marcipanis/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
     "@babel/core": "7.17.8",
+    "@babel/preset-env": "7.20.2",
+    "@babel/preset-typescript": "7.18.6",
     "@parcel/plugin": "2.7.0",
     "@parcel/transformer-inline-string": "2.7.0",
     "@parcel/transformer-sass": "2.7.0",
+    "@types/chai": "4.3.4",
+    "@types/mocha": "10.0.0",
     "@types/node": "17.0.23",
     "@typescript-eslint/eslint-plugin": "5.38.1",
     "@typescript-eslint/parser": "5.38.1",
     "babel-preset-es2015": "6.24.1",
     "babel-preset-stage-0": "6.24.1",
+    "chai": "4.3.7",
     "eslint": "8.24.0",
     "eslint-config-airbnb": "19.0.4",
     "express": "4.18.1",
+    "mocha": "10.1.0",
     "parcel": "2.7.0",
     "postcss": "8.4.12",
     "postcss-import": "14.1.0",
@@ -44,9 +50,9 @@
   },
   "dependencies": {
     "babel-core": "6.26.3",
+    "express": "4.18.1",
     "handlebars": "4.7.7",
-    "nanoid": "3.3.1",
-    "express": "4.18.1"
+    "nanoid": "3.3.1"
   },
   "staticFiles": {
     "staticPath": "assets",

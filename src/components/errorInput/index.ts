@@ -1,8 +1,17 @@
 import Block from '../../utils/block';
 import './errorInput.css';
 
-export class ErrorInput extends Block {
+interface ErrorInputProps {
+  isValid: boolean,
+  validateMessage: string,
+}
+
+export class ErrorInput extends Block<ErrorInputProps> {
   static componentName = 'ErrorInput';
+
+  constructor({ ...props }: ErrorInputProps) {
+    super({ ...props });
+  }
 
   protected render(): string {
     if (this.props.isValid) {

@@ -2,12 +2,13 @@ import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
 import EventBus from './eventBus';
 
-interface BlockMeta<P = any> {
-  props: P;
-}
-
 // eslint-disable-next-line no-undef
-type Events = Values <typeof Block.EVENTS>;
+type Events = Values<typeof Block.EVENTS>;
+
+export interface BlockClass<P> extends Function {
+  new (props: P): Block<P>;
+  componentName?: string;
+}
 
 export default class Block<P = any> {
   static EVENTS = {
@@ -21,13 +22,10 @@ export default class Block<P = any> {
 
   public id = nanoid(6);
 
-// @ts-expect-error
-  private readonly _meta: BlockMeta;
-
   // eslint-disable-next-line no-undef
   protected _element: Nullable<HTMLElement> = null;
 
-  protected readonly props: P;
+  protected props: P;
 
   protected children: { [id: string]: Block } = {};
 
@@ -35,18 +33,14 @@ export default class Block<P = any> {
 
   protected state: any = {};
 
-  public refs: { [key: string]: Block } = {};
+  protected refs: { [key: string]: Record<string, Block> } = {};
 
   public constructor(props?: P) {
     const eventBus = new EventBus<Events>();
 
-    this._meta = {
-      props,
-    };
-
     this.getStateFromProps(props);
 
-    this.props = this._makePropsProxy(props || ({} as P));
+    this.props = props || ({} as P); // this._makePropsProxy(props || ({} as P));
     this.state = this._makePropsProxy(this.state);
 
     this.eventBus = () => eventBus;
@@ -103,12 +97,17 @@ export default class Block<P = any> {
   }
   /* eslint-enable */
 
-  setProps = (nextProps: P) => {
-    if (!nextProps) {
+  setProps = (nextPartialProps: Partial<P>) => { // setProps = (nextProps: P) => {
+    if (!nextPartialProps) { // if (!nextProps) {
       return;
     }
 
-    Object.assign(this.props, nextProps);
+    const prevProps = this.props; // Object.assign(this.props, nextProps); };
+    const nextProps = { ...prevProps, ...nextPartialProps };
+
+    this.props = nextProps;
+
+    this.eventBus().emit(Block.EVENTS.FLOW_CDU, prevProps, nextProps);
   };
 
   setState = (nextState: any) => {
@@ -154,8 +153,7 @@ export default class Block<P = any> {
     return this.element!;
   }
 
-  _makePropsProxy(props: any): any {
-
+  _makePropsProxy(props: P): any {
     const self = this;
 
     return new Proxy(props as unknown as object, {
@@ -164,6 +162,7 @@ export default class Block<P = any> {
         return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target: Record<string, unknown>, prop: string, value: unknown) {
+        // console.log('set new prop', self.id, self.constructor.componentName, target[prop], value) //!!!
         target[prop] = value;
 
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
@@ -187,6 +186,7 @@ export default class Block<P = any> {
     }
 
     Object.entries(events).forEach(([event, listener]) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       this._element!.removeEventListener(event, listener);
     });
@@ -200,6 +200,7 @@ export default class Block<P = any> {
     }
 
     Object.entries(events).forEach(([event, listener]) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       this._element!.addEventListener(event, listener);
     });
@@ -217,7 +218,6 @@ export default class Block<P = any> {
     });
 
     Object.entries(this.children).forEach(([id, component]) => {
-
       const stub = fragment.content.querySelector(`[data-id="${id}"]`);
 
       if (!stub) {
@@ -229,10 +229,11 @@ export default class Block<P = any> {
       const content = component.getContent();
       stub.replaceWith(content);
 
-      const layoutContent = content.querySelector('[data-layout="1"]');
+      const slotContent = content.querySelector('[data-slot="1"]') as HTMLDivElement;
 
-      if (layoutContent && stubChilds.length) {
-        layoutContent.append(...stubChilds);
+      if (slotContent && stubChilds.length) {
+        slotContent.append(...stubChilds);
+        delete slotContent.dataset.slot;
       }
     });
 

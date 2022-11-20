@@ -1,5 +1,4 @@
 .chatlist-item {
-  cursor: pointer;
   width: 100%;
   display: flex;
   flex: 0 0 100%;
@@ -7,6 +6,15 @@
   flex-direction: row;
   justify-content: start;
   margin-bottom: 5px;
+}
+
+.chatlist-item:hover {
+  background-color: #e2f0fa;
+  cursor: pointer;
+}
+
+.chatlist-selected {
+  background-color: #e2f0fa;
 }
 
 .chatlist-item-avatar {

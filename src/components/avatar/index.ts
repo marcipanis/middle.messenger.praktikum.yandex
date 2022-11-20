@@ -1,19 +1,20 @@
 import Block from '../../utils/block';
-
 import './avatar.css';
 
 interface AvatarProps {
-  styles: string;
+  id: string,
+  edit?: boolean,
+  styles: string,
+  onClick?: () => void;
+  events: Record<string, unknown>;
 }
 
-export class Avatar extends Block {
+export class Avatar extends Block<AvatarProps> {
   static componentName = 'Avatar';
 
-  constructor({
-    styles,
-  }: AvatarProps) {
+  constructor({ onClick, ...props }: AvatarProps) {
     super({
-      styles,
+      ...props, events: { click: onClick },
     });
   }
 
@@ -22,8 +23,15 @@ export class Avatar extends Block {
     return `
       <div class="avatar-container">
         <div class="avatar-wrap">
-          <div class="{{styles}}">
-            <div data-layout=1></div>
+          <div class="{{styles}}" id="{{id}}" 
+            {{#if avatar}} 
+               style="background-image: url('https://ya-praktikum.tech/api/v2/resources{{avatar}}'); 
+                   background-size: cover;" 
+            {{/if}}>
+            {{#if edit}}
+              <label   class="input-avatar-label" >Поменять аватар</label>
+            {{/if}}
+          
           </div>
         </div>
       </div>
