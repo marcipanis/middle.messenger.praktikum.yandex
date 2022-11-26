@@ -22,6 +22,8 @@ https://www.figma.com/file/oC56b4s0AbIyHSqTypT6Cy/Chat?node-id=0%3A1
 ###  Хостинг проекта  ###
 https://stately-puppy-588309.netlify.app/
 
+https://sheltered-taiga-01058.herokuapp.com/
+
 ###  Тестовые пользователи  ###
 + Логин - zebra1  
 Пароль - Metall66
