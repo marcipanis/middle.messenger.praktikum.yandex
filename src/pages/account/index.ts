@@ -2,11 +2,12 @@ import Block from '../../utils/block';
 import { withUser } from '../../utils/store';
 import { AccountData } from '../../api/accountApi';
 import AuthController from '../../controllers/loginController';
-import AccountController from '../../controllers/accountController';
+import Router, { routes, withRouter } from '../../utils/router';
 
 interface AccountBaseProps extends AccountData{
   onLogout?: () => void;
   onClick?: () => void;
+  router: Router;
 }
 
 class AccountBase extends Block<AccountBaseProps> {
@@ -14,7 +15,7 @@ class AccountBase extends Block<AccountBaseProps> {
     super({
       ...props,
       onLogout: () => AuthController.logout(),
-      onClick: () => AccountController.toCharts(),
+      onClick: () => props.router.go(routes.chats),
     });
   }
 
@@ -97,4 +98,4 @@ class AccountBase extends Block<AccountBaseProps> {
   }
 }
 
-export const Account = withUser(AccountBase);
+export const Account = withRouter(withUser(AccountBase));

@@ -43,6 +43,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   registerComponent(Avatar);
   registerComponent(Chatlist);
   registerComponent(ChatlistItem);
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   registerComponent(Chat);
   registerComponent(Message);
   registerComponent(Modal);

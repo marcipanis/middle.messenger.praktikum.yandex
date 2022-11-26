@@ -2,7 +2,10 @@ import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
 import EventBus from './eventBus';
 
-// eslint-disable-next-line no-undef
+type Nullable<T> = T | null;
+type Keys<T extends Record<string, unknown>> = keyof T;
+type Values<T extends Record<string, unknown>> = T[Keys<T>];
+
 type Events = Values<typeof Block.EVENTS>;
 
 export interface BlockClass<P> extends Function {
@@ -22,10 +25,9 @@ export default class Block<P = any> {
 
   public id = nanoid(6);
 
-  // eslint-disable-next-line no-undef
   protected _element: Nullable<HTMLElement> = null;
 
-  protected props: P;
+  props: P;
 
   protected children: { [id: string]: Block } = {};
 
@@ -187,7 +189,7 @@ export default class Block<P = any> {
 
     Object.entries(events).forEach(([event, listener]) => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
+      // @ts-ignore
       this._element!.removeEventListener(event, listener);
     });
   }
@@ -201,7 +203,7 @@ export default class Block<P = any> {
 
     Object.entries(events).forEach(([event, listener]) => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
+      // @ts-ignore
       this._element!.addEventListener(event, listener);
     });
   }

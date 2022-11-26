@@ -1,5 +1,7 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 // eslint-disable-next-line max-classes-per-file
-import Block from './block';
+import Block, { BlockClass } from './block';
 import renderDOM from './renderDOM';
 
 export enum routes {
@@ -14,7 +16,7 @@ export enum routes {
 }
 
 class Route {
-  private pathname: string;
+  pathname: string;
 
   private readonly BlockClass: typeof Block;
 
@@ -59,9 +61,9 @@ export default class Router {
 
   private routes: Route[] = [];
 
-  private history = window.history;
+  history = window.history;
 
-  private currentRoute: Route | null = null;
+  currentRoute: Route | null = null;
 
   constructor() {
     if (Router.__instance) {
@@ -72,7 +74,9 @@ export default class Router {
     Router.__instance = this;
   }
 
-  public use(pathname: string, block: typeof Block) {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  public use(pathname: string, block: typeof BlockClass) {
     try {
       const route = new Route(pathname, block, { rootQuery: '#app' });
       this.routes.push(route);
@@ -128,7 +132,9 @@ export interface WithRouterProps {
   router: Router;
 }
 
-export function withRouter(Component: typeof Block) {
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+export function withRouter(Component: typeof BlockClass) {
   return class WithRouter extends Component {
     public static componentName = Component.name;
 
