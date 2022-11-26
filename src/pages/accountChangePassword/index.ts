@@ -4,6 +4,7 @@ import { Validation } from '../../utils/validation';
 import { withUser } from '../../utils/store';
 import AccountController from '../../controllers/accountController';
 import { AccountPasswordData } from '../../api/accountApi';
+import { routes, withRouter } from '../../utils/router';
 
 interface AccountChangePasswordBaseProps extends AccountPasswordData{
   onReg?: () => void;
@@ -14,7 +15,7 @@ export class AccountChangePasswordBase extends Block<AccountChangePasswordBasePr
   constructor(props: any) {
     super({
       ...props,
-      onClick: () => AccountController.toAccount(),
+      onClick: () => props.router.go(routes.account),
       onReg: async () => {
         // validation there
         const element = this.getContent();
@@ -89,4 +90,4 @@ export class AccountChangePasswordBase extends Block<AccountChangePasswordBasePr
   }
 }
 
-export const AccountChangePassword = withUser(AccountChangePasswordBase);
+export const AccountChangePassword = withRouter(withUser(AccountChangePasswordBase));

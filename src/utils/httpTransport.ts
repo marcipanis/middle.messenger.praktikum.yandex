@@ -19,7 +19,7 @@ type Options = {
     data?: any;
 };
 
-type HTTPMethod = (url: string, data?: unknown, type?: ContentType) => Promise<unknown>;
+type HTTPMethod = (url: string, data?: unknown, type?: ContentType) => Promise<any>;
 
 export default class HTTPTransport {
   static API_URL = 'https://ya-praktikum.tech/api/v2';

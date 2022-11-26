@@ -53,6 +53,7 @@
     "ignorePatterns": [
         "/dist/*",
         "**/*.min.js",
-        "/node_modules"
+        "/node_modules",
+        "/src/**/*.spec.ts"
     ]
 }
