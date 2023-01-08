@@ -21,15 +21,3 @@ https://www.figma.com/file/oC56b4s0AbIyHSqTypT6Cy/Chat?node-id=0%3A1
 
 ###  Хостинг проекта  ###
 https://stately-puppy-588309.netlify.app/
-
-###  Тестовые пользователи  ###
-+ Логин - zebra1  
-Пароль - Metall66
-
-
-+ Логин - zebra3  
-Пароль - пустой
-
-
-+ Логин - marcipanis  
-Пароль - Metall66
